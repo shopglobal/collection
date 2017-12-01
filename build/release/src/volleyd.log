@@ -6,3 +6,7 @@
 2017-Dec-01 09:57:02.507022 INFO [daemon] Module folder: ./volleyd
 2017-Dec-01 09:57:02.507093 ERROR [currency] failed to parse coinbase tx from hard coded blob
 2017-Dec-01 09:57:02.507159 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:28:41.684579 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:28:41.684998 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:28:41.685107 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:28:41.685183 ERROR [currency] Failed to generate genesis block
