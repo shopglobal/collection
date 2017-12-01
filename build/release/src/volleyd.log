@@ -18,3 +18,23 @@
 2017-Dec-01 10:39:03.218161 INFO [daemon] Module folder: ./volleyd
 2017-Dec-01 10:39:03.218456 ERROR [currency] failed to parse coinbase tx from hard coded blob
 2017-Dec-01 10:39:03.218668 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:42:10.792458 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:42:10.792747 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:42:10.792823 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:42:10.792962 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:51:23.264060 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:51:23.264352 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:51:23.264430 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:51:23.264480 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:53:03.280434 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:53:03.280930 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:53:03.281036 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:53:03.281108 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:53:59.681493 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:53:59.681764 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:53:59.681830 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:53:59.681888 ERROR [currency] Failed to generate genesis block
+2017-Dec-01 10:54:03.618779 INFO [daemon] volley v1.1.1.1()
+2017-Dec-01 10:54:03.618980 INFO [daemon] Module folder: ./volleyd
+2017-Dec-01 10:54:03.619066 ERROR [currency] failed to parse coinbase tx from hard coded blob
+2017-Dec-01 10:54:03.619140 ERROR [currency] Failed to generate genesis block
