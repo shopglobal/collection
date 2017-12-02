@@ -56,16 +56,27 @@ CMAKE_BINARY_DIR = /root/collection/build/release
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : test/fast
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -78,6 +89,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -88,6 +110,28 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,21 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-external/gtest/CMakeFiles/gtest_main.dir/rule:
-	cd /root/collection/build/release && $(MAKE) -f CMakeFiles/Makefile2 external/gtest/CMakeFiles/gtest_main.dir/rule
-.PHONY : external/gtest/CMakeFiles/gtest_main.dir/rule
-
-# Convenience name for target.
-gtest_main: external/gtest/CMakeFiles/gtest_main.dir/rule
-
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	cd /root/collection/build/release && $(MAKE) -f external/gtest/CMakeFiles/gtest_main.dir/build.make external/gtest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
-
-# Convenience name for target.
 external/gtest/CMakeFiles/gtest.dir/rule:
 	cd /root/collection/build/release && $(MAKE) -f CMakeFiles/Makefile2 external/gtest/CMakeFiles/gtest.dir/rule
 .PHONY : external/gtest/CMakeFiles/gtest.dir/rule
@@ -150,6 +179,21 @@ gtest: external/gtest/CMakeFiles/gtest.dir/rule
 gtest/fast:
 	cd /root/collection/build/release && $(MAKE) -f external/gtest/CMakeFiles/gtest.dir/build.make external/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
+
+# Convenience name for target.
+external/gtest/CMakeFiles/gtest_main.dir/rule:
+	cd /root/collection/build/release && $(MAKE) -f CMakeFiles/Makefile2 external/gtest/CMakeFiles/gtest_main.dir/rule
+.PHONY : external/gtest/CMakeFiles/gtest_main.dir/rule
+
+# Convenience name for target.
+gtest_main: external/gtest/CMakeFiles/gtest_main.dir/rule
+
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	cd /root/collection/build/release && $(MAKE) -f external/gtest/CMakeFiles/gtest_main.dir/build.make external/gtest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 src/gtest-all.o: src/gtest-all.cc.o
 
@@ -211,11 +255,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test"
-	@echo "... gtest_main"
+	@echo "... list_install_components"
+	@echo "... install"
 	@echo "... edit_cache"
-	@echo "... gtest"
+	@echo "... test"
 	@echo "... rebuild_cache"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... src/gtest-all.o"
 	@echo "... src/gtest-all.i"
 	@echo "... src/gtest-all.s"
